@@ -1,0 +1,62 @@
+Dado el siguiente esquema relacional.
+
+CLIENTE (Nrocli, Nyape, Domicilio, Localidad, Saldocli)
+
+FACTURA (Nrofactura, Cliente, Fecha, Total)
+
+DETALLE (Nrofactura, Renglón, Articulo, Cantidad, Preciouni)
+
+ARTICULO ( Nroartic, Descripcion, Rubro, Stock, Pto_reposicion, precio)
+
+RUBRO(Cod_rubro, Descripcion) 
+
+ 
+
+Resolver en SQL Server o Sql Ansi:
+
+
+
+Hallar todos los clientes deudores (saldo < 0)
+Averiguar los datos delos clientes que vivan en Capital Federal o Carapachay y no sean deudores. Mostrar el listado ordenado de mayor a menor por saldo.
+Listar los datos de losclientes que tengan apellido González o Gonzalez
+Listar los datos de los artículos que tengan un precio mayor o igual a $1000 y menor o igual 50
+Obtener todas las fechas diferentes en que haya comprado el cliente 138
+Listar los datos de los clientes que compraron este año.
+
+
+
+
+1)
+
+SELECT *
+FROM CLIENTE
+WHERE Saldocli < 0;
+
+
+2)
+SELECT *
+FROM cliente
+Where localidad like ('Capital Federal' or 'Carapachay') and saldocli > 0
+Order by saldocli desc;
+
+
+3)
+SELECT *
+FROM CLIENTE
+Where nyape like '% Gonz_alez %';
+
+4)
+No es posible de realizar.
+
+5)
+SELECT Distinct fecha
+FROM Factura
+Where cliente = 138;
+
+
+6)
+SELECT *
+FROM CLIENTE
+Where Nrocli is not beetween (Select Nrocli
+			      FROM FECHA
+			      Where fecha is not beetwen 2021-01-01 and 2021-12-31);

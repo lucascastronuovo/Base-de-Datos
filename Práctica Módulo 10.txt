@@ -1,0 +1,68 @@
+Dado el siguiente esquema relacional:
+
+CLIENTE (Nrocli, Nyape, Domicilio, Localidad, Saldocli)
+
+FACTURA (Nrofactura, Cliente, Fecha, Total)
+
+DETALLE (Nrofactura, Renglón, Artículo, Cantidad, Preciouni)
+
+ARTICULO (Nroartic, Descripción, Rubro, Stock, Pto_reposicion, precio)
+
+RUBRO(Cod_rubro, Descripcion)
+
+ 
+
+ Resolver en SQL:
+
+Incrementar un 25 % el precio de artículos del rubro con descripción Herramienta Eléctrica.
+
+Select *
+FROM ARTICULO;
+
+
+Update ARTICULO
+SET PRECIO = PRECIO * 1.25
+Where RUBRO in (Select cod_rubro
+				FROM RUBRO as R
+				Where R.DESCRIPCION like '_erramienta _l_ctrica');
+
+Select *
+FROM ARTICULO;
+
+
+
+
+Ingresar un nuevo rubro con código 18 y descripción “Informática”.
+
+Select *
+FROM RUBRO;
+
+
+insert into RUBRO
+values (18, 'Informática');
+
+
+
+Select *
+FROM RUBRO;
+
+
+Sumar 2 unidades a la cantidad comprada del artículo con código 4040 en la factura nro. 1005.
+
+Select *
+FROM DETALLE;
+
+
+Update DETALLE
+SET CANTIDAD=CANTIDAD+2
+Where ARTICULO = 4040 and NROFACTURA = 1005;
+
+
+
+Select *
+FROM DETALLE;
+
+Dar de baja a los artículos que nunca se vendieron.
+
+
+

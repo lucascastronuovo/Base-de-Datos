@@ -1,0 +1,20 @@
+CLIENTE (Nrocli, Nyape, Domicilio, Localidad, Saldocli)
+
+FACTURA (Nrofactura, Cliente, Fecha, Total)
+
+DETALLE (Nrofactura, Renglón, Artículo, Cantidad, Preciouni)
+
+ARTICULO (Nroartic, Descripción, Rubro, Stock, Pto_reposicion, precio)
+
+RUBRO (Cod_rubro, Descripcion) 
+
+ 
+
+Resolver en SQL: 
+
+Listar todos los datos de los clientes que NUNCA compraron durante este año. Ordenar el resultado alfabéticamente por nombre y apellido.
+Listar todos los datos de los clientes que nunca compraron el artículo con código 4030.
+Listar los datos de las facturas de este año en que se vendieron artículos del rubro clavos (descripción).
+Listar los datos de las facturas de este año en que NO se vendieron artículos del rubro herramientas eléctricas (descripción).
+Realizar un listado completo de facturación que incluya las facturas a consumidores finales (nrocli = NULL) y los clientes que aún no tienen facturación.
+(Solo las tablas factura y cliente).

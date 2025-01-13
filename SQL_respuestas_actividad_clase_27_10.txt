@@ -1,0 +1,36 @@
+1)
+select alumnos.nom, alumnos.ape from alumnos
+where alumnos.cuota > 600 and alumnos.id_carr = ADMN
+
+2)
+Select * from articulo
+join rubro
+on articulo.nroartic = rubro.cod_rubro
+
+3)
+Select * from Cliente
+join factura
+on cliente.NroCli = Factura.cliente
+where cliente.Nyape = "Garcia"
+
+
+4)
+Select * from Cliente
+join factura
+on cliente.NroCli = Factura.cliente
+where cliente.Nyape = "Garcia" or cliente.Nyape = "Perez"
+
+5)
+Select * from Cliente
+join factura
+on cliente.NroCli = Factura.cliente
+where cliente.Nyape = "Garcia" or cliente.Nyape = "Perez" and factura.fecha between "2021-01-01" and "2022-01-01"
+
+6)
+Repetida
+
+7)
+Select * from Cliente
+join factura
+on cliente.NroCli = Factura.cliente
+order by factura.cliente ASC

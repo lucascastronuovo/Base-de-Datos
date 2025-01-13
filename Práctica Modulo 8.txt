@@ -1,0 +1,61 @@
+Dado el siguiente esquema relacional.
+
+CLIENTE (Nrocli, Nyape, Domicilio, Localidad, Saldocli)
+
+FACTURA (Nrofactura, Cliente, Fecha, Total)
+
+DETALLE (Nrofactura, Renglón, Articulo, Cantidad, Preciouni)
+
+ARTICULO ( Nroartic, Descripcion, Rubro, Stock, Pto_reposicion, precio)
+
+RUBRO(Cod_rubro, Descripcion) 
+
+ 
+
+Resolver en SQL Server o Sql Ansi:
+
+
+
+Hallar todos los clientes deudores (saldo < 0)
+
+Select NYAPE
+FROM CLIENTE
+WHERE SALDOCLI < 0;
+
+
+
+
+Averiguar los datos de los clientes que vivan en Capital Federal o Carapachay y no sean deudores. 
+Mostrar el listado ordenado de mayor a menor por saldo.
+
+Select * 
+FROM CLIENTE
+WHERE SALDOCLI > 0 AND (LOCALIDAD like 'Capital Federal' OR LOCALIDAD like 'Carapachay')
+order by SALDOCLI DESC ;
+
+
+Listar los datos de los clientes que tengan apellido González o Gonzalez
+
+Select *
+FROM CLIENTE
+WHERE NYAPE like '%Gonz_lez%';
+
+
+Listar los datos de los artículos que tengan un precio mayor o igual a $1000 y menor o igual 50
+
+Select *
+FROM ARTICULO
+WHERE (PRECIO >= 1000) OR (PRECIO <= 50);
+
+Obtener todas las fechas diferentes en que haya comprado el cliente 138
+
+Select DISTINCT fecha
+FROM FACTURA
+WHERE CLIENTE = 138;
+
+
+Listar los datos de los clientes que compraron este año.
+
+SELECT DISTINCT C.*, FECHA
+FROM CLIENTE AS C inner join FACTURA AS F on (C.NROCLI = F.CLIENTE)
+WHERE YEAR(FECHA) = 2020;
